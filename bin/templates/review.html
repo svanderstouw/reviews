@@ -1,9 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>A Review</title>
+<title>City Review</title>
 </head>
 <body>
-	<h1>A Single Review</h1>
+	<div th:each="review: ${reviews}">
+		<h2 th:text="'Review of ' + ${review.cityName} + ', ' + ${review.countryName}"></h2>
+		
+		<p>Date visited: <strong th:text="${review.dateVisited}"></strong></p>
+		<img th:src="@{'/images/' + ${review.imageUrl}}" />
+		<p th:text="${review.photoCaption}"></p>
+
+		<p th:text="${review.reviewText}"></p>
+
+		<a href="http://localhost:8080/show-reviews">Back to home</a>
+
+	</div>
 </body>
 </html>

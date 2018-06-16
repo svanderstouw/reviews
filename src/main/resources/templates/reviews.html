@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>reviews</title>
+	<title>City Reviews</title>
 </head>
 <body>
-	<h1>A List of Reviews</h1>
+	<h2>Reviews of European Cities</h2>
+
+	<div th:each="review: ${reviews}">
+		<h3>
+		<a th:href="@{/review(id=${review.id})}" ><span th:text="${review.cityName} + ', ' + ${review.countryName}"></span></a>
+		</h3>
+	</div>
 </body>
 </html>
